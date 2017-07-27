@@ -1,0 +1,36 @@
+= form_for(@recipe, remote: true, format: :json, html: {class: :recipe_form} ) do |f|
+  #error_explanation{:style => "display:none;"}
+    %ul
+      - if @recipe.errors.any?
+        - @recipe.errors.full_messages.each do |msg|
+          %li= msg
+  .fields
+    = f.label :Name
+    %br/
+    = f.text_field :name
+    %br/
+    = f.label :Description
+    %br/
+    = f.text_field :description
+    %br/
+
+    #fixin_choices
+      = render 'fixput_form'
+      = render 'fixput_form'
+      = render 'fixput_form'
+      = render 'fixput_form'
+    %a#addNewFixput{:href => "javascript:;"} Add New Ingredient
+
+    #steps_choices
+      = render 'steput_form'
+      = render 'steput_form'
+      = render 'steput_form'
+      = render 'steput_form'
+    %a#addNewSteput{:href => "javascript:;"} Add New Step
+  .actions
+    = f.submit
+.success-message
+#new_fixput_form{:style => "display: none;"}
+  = render partial: "fixput_form", locals: {poll: false}
+#new_steput_form{:style => "display: none;"}
+  = render partial: "steput_form", locals: {poll: false}

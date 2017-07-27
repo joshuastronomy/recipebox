@@ -1,0 +1,17 @@
+%h1 Recipe
+= link_to 'Add a new recipe to the Recipebox!', new_recipe_path, :class => "toplink"
+%br
+%table.table
+  %tr.headrow
+    %th.tabhead Name
+    %th.tabhead Description
+
+  - @recipes.each do |recipe|
+    %tr
+      %td= recipe.name
+      %td= recipe.description
+      %td= link_to 'Show this Recipe', recipe_path(recipe)
+      %td= link_to 'Edit this Recipe', edit_recipe_path(recipe)
+      %td= link_to 'Delete this Recipe', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }
+%br
+  = paginate @recipes

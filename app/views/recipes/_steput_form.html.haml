@@ -1,0 +1,6 @@
+.steputForm
+  = label_tag "Step"
+  %br/
+  = text_field_tag "steps[]"
+  %a.remove-steput{:href => "#", :onclick => "removeSteput($(this))"} X
+  %br/

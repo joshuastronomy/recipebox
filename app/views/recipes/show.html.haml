@@ -1,0 +1,14 @@
+%p.show
+  %strong Name:
+  = @recipe.name
+%p.show
+  %strong Description:
+  = @recipe.description
+-# %h2 Comments
+-# = render @article.comments
+-# %h2 Add a comment:
+-# = render 'comments/form'
+
+= link_to 'Edit this recipe', edit_recipe_path(@recipe), :class => "editbutton"
+%br
+= link_to 'Back', recipes_path, :class => "backbutton"
