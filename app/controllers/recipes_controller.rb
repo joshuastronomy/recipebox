@@ -9,6 +9,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.fixins.build
+    @recipe.steps.build
   end
 
   def edit
@@ -36,13 +38,13 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy!
+    @recipe.destroy
 
     redirect_to recipes_path
   end
 
   private
     def rec_params
-      params.require(:recipe).permit(:name, :description)
+      params.require(:recipe).permit(:name, :description, fixins_attributes: [:id, :name, :amount, :_destroy], steps_attributes: [:id, :title, :description, :_destroy])
     end
 end
