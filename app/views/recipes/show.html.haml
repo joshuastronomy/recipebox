@@ -4,6 +4,15 @@
 %p.show
   %strong Description:
   = @recipe.description
+%p.show
+  %strong Ingredients
+  - @recipe.fixins.each do |i|
+    %li= i.name + " +++ " + i.amount
+%p.show
+  %strong Steps
+  - @recipe.steps.each do |i|
+    %li= i.title + " +++ " + i.description
+
 -# %h2 Comments
 -# = render @article.comments
 -# %h2 Add a comment:
